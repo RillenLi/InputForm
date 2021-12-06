@@ -1,0 +1,21 @@
+﻿@model InputForm.Models.Person;
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Поиск накоплений";
+}
+<html>
+<head>
+</head>
+<body>
+    <form asp-action="search" asp-controller="home">
+        <div class="form-group">
+            <p>Фамилия: <input type="text" name="surname" class="form-control" size="25" required/></p>
+            <p>Имя: <input type ="text" name="name" class="form-control" size="25" required> </p>
+            <p>Отчество:<input type="text" name="patronymic" class="form-control" size="25" required></p>
+            <p>СНИЛС(в виде ХХХ-ХХХ-ХХХ ХХ): <input type="text" name="snils" class="form-control" size="14" pattern="([0-9]{3})-([0-9]{3})-([0-9]{3}) ([0-9]{2})" required></p>
+            <p>Дата рождения:<input type="date" name="date" class="form-control" required></p>
+            <p><input type="submit" value="Отправить"><input type="reset"></p>
+        </div>
+    </form>
+</body>
+</html>

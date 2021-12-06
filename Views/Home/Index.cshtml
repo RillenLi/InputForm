@@ -1,0 +1,50 @@
+﻿@model IEnumerable<InputForm.Models.Person>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Клиенты";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список клиентов</title>
+    <link rel="stylesheet" href="~/css/StyleSheet.css">
+</head>
+<body>
+    <form asp-action="search" asp-controller="Home" method="get">
+        <div>
+            <table>
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Дата Рождения</th>
+            <th>№СНИЛС</th>
+        </tr>
+        @foreach (var pers in Model)
+            {
+                <tr>
+                    <td>
+                    @pers.Surname
+                    </td>
+                    <td>
+                    @pers.Name
+                    </td>
+                    <td>
+                    @pers.Patronymic
+                    </td>
+                    <td>
+                    @pers.BirthDate.ToShortDateString()
+                    </td>
+                    <td>
+                    @pers.SNILS
+                    </td>
+                </tr>
+            }
+        </table>
+        <p>
+            <button>Поиск</button>
+        </p>
+        </div>
+    </form>
+</body>
+</html>

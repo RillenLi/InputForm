@@ -1,0 +1,35 @@
+﻿@model PersSaving;
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Результат поиска";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>Фамилия</td>
+                <td>Имя</td>
+                <td>Отчество</td>
+                <td>СНИЛС(ХХХ-ХХХ-ХХХ ХХ)</td>
+                <td>Период c</td>
+                <td> по</td>
+                <td>Накопления</td>
+            </tr>
+            <tr>
+                <td>@Model.Person.Surname</td>
+                <td>@Model.Person.Name</td>
+                <td>@Model.Person.Patronymic</td>
+                <td>@Model.SNILS</td>
+                <td>@Model.PBegin.ToShortDateString()</td>
+                <td>@Model.PEnd.ToShortDateString()</td>
+                <td>@Model.Sum</td>                
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
