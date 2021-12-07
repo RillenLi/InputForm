@@ -25,7 +25,7 @@ namespace InputForm.Controllers
         {
             return View(pc.GetPeople());
         }
-
+       
         [HttpGet]
         public IActionResult Search()
         {

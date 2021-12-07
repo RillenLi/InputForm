@@ -30,6 +30,7 @@ namespace InputForm.DAL
             PersSavingDB res = gsbs
                 .Include(ps => ps.Person)
                 .FirstOrDefault();
+            //res.Person = db.Persons.Find(res.PersID);
             return res == null ? null : new PersSaving(res);
         }
         private bool disposed = false;
