@@ -24,5 +24,9 @@ namespace InputForm.Models
             PersID = dbModel.PersonId;
             Person = new Person(dbModel.Person);
         }
+        public PersSaving(string snils)
+        {
+            SNILS = snils;
+        }
     }
 }

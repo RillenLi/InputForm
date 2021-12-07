@@ -14,10 +14,12 @@ namespace InputForm.Controllers
     {
 
         IPersRepository pc;
+
         public HomeController(PensionContext context)
         {
             pc = new SQLPersRepository(context);
         }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -29,21 +31,20 @@ namespace InputForm.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Search(string snils, string surname, string name, string patronymic, DateTime date)
         {
-            try
+            PersSaving Saving = pc.GetSavingbySnils(snils);
+            bool validRes = ValidateUserData(Saving, surname, name, patronymic, date);
+            if (Saving == null)
             {
-                PersSaving Saving = pc.GetSavingbySnils(snils);
-                bool validRes = ValidateUserData(Saving, surname, name, patronymic, date);
+                Saving = new PersSaving(snils);
+            }
 
-                return validRes ? View("Answer", Saving) : View("ErrorUser", snils);
-            }
-            catch (Exception)
-            {
-                return View("ErrorNull", snils);
-            }
+            return validRes ? View("Answer", Saving) : View("ErrorUser", snils);
         }
+
         [HttpGet]
         public IActionResult Answer()
         {
@@ -52,7 +53,7 @@ namespace InputForm.Controllers
 
         private bool ValidateUserData(PersSaving persSaving, string surname, string name, string patronymic, DateTime date)
         {
-            if (persSaving==null) throw new Exception("");
+            if (persSaving == null) return true;
             if (persSaving.Person.BirthDate.Date != date)
             {
                 return false;

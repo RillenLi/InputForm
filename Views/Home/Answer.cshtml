@@ -10,26 +10,33 @@
 </head>
 <body>
     <div>
-        <table>
-            <tr>
-                <td>Фамилия</td>
-                <td>Имя</td>
-                <td>Отчество</td>
-                <td>СНИЛС(ХХХ-ХХХ-ХХХ ХХ)</td>
-                <td>Период c</td>
-                <td> по</td>
-                <td>Накопления</td>
-            </tr>
-            <tr>
-                <td>@Model.Person.Surname</td>
-                <td>@Model.Person.Name</td>
-                <td>@Model.Person.Patronymic</td>
-                <td>@Model.SNILS</td>
-                <td>@Model.PBegin.ToShortDateString()</td>
-                <td>@Model.PEnd.ToShortDateString()</td>
-                <td>@Model.Sum</td>                
-            </tr>
-        </table>
+        @if (Model.Person != null)
+        {
+            <table>
+                <tr>
+                    <td>Фамилия</td>
+                    <td>Имя</td>
+                    <td>Отчество</td>
+                    <td>СНИЛС(ХХХ-ХХХ-ХХХ ХХ)</td>
+                    <td>Период c</td>
+                    <td> по</td>
+                    <td>Накопления</td>
+                </tr>
+                <tr>
+                    <td>@Model.Person.Surname</td>
+                    <td>@Model.Person.Name</td>
+                    <td>@Model.Person.Patronymic</td>
+                    <td>@Model.SNILS</td>
+                    <td>@Model.PBegin.ToShortDateString()</td>
+                    <td>@Model.PEnd.ToShortDateString()</td>
+                    <td>@Model.Sum</td>
+                </tr>
+            </table>
+        }
+        else
+        {
+            <label style="color:crimson; font-size: 16px">По номеру СНИЛС @Model.SNILS нет записей в базе данных.</label>
+        }
     </div>
 </body>
 </html>
