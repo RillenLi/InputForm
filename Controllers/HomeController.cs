@@ -39,7 +39,7 @@ namespace InputForm.Controllers
             bool validRes = ValidateUserData(Saving, surname, name, patronymic, date);
             if (Saving == null)
             {
-                Saving = new PersSaving(snils);
+                Saving = new PersSaving($"По номеру СНИЛС {snils} нет записей в базе данных.");
             }
 
             return validRes ? View("Answer", Saving) : View("ErrorUser", snils);

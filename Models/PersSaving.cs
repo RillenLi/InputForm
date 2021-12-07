@@ -7,13 +7,15 @@ namespace InputForm.Models
 {
     public class PersSaving
     {
-        public int ID { get; set;}
+        public int ID { get; set; }
         public string SNILS { get; set; }
         public DateTime PBegin { get; set; }
         public DateTime PEnd { get; set; }
         public double Sum { get; set; }
         public int PersID { get; set; }
         public Person Person { get; set; }
+        public string ErrorMessage{get;set;}
+        
         public PersSaving(PersSavingDB dbModel)
         {
             ID = dbModel.ID;
@@ -24,9 +26,10 @@ namespace InputForm.Models
             PersID = dbModel.PersonId;
             Person = new Person(dbModel.Person);
         }
-        public PersSaving(string snils)
+        
+        public PersSaving(string errorMessage)
         {
-            SNILS = snils;
+            ErrorMessage = errorMessage;
         }
     }
 }

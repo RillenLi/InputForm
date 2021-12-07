@@ -10,7 +10,7 @@
 </head>
 <body>
     <div>
-        @if (Model.Person != null)
+        @if (string.IsNullOrEmpty(Model.ErrorMessage))
         {
         <table>
             <tr>
@@ -35,7 +35,7 @@
         }
         else
         {
-            <label style="color:crimson; font-size: 16px">По номеру СНИЛС @Model.SNILS нет записей в базе данных.</label>
+            <label style="color:crimson; font-size: 16px">@Model.ErrorMessage</label>
         }
     </div>
 </body>

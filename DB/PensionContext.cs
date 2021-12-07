@@ -9,9 +9,6 @@ namespace InputForm.Models
 {
     public class PensionContext:DbContext
     {
-        /*public PensionContext() : base()
-        {
-        }*/
         public DbSet<PersonDB> Persons { get; set; }
         public DbSet<PersSavingDB> PersSavings { get; set; }
         public PensionContext(DbContextOptions<PensionContext> options):base(options)
